@@ -64,6 +64,7 @@ FilterContainer.propTypes = {
   hasOffers: PropTypes.bool.isRequired,
   id: PropTypes.string,
   onFilterCurrenciesChange: PropTypes.func.isRequired,
+  onFilterRemoteChange: PropTypes.func.isRequired,
   onFilterTypesChange: PropTypes.func.isRequired,
   onIdChange: PropTypes.func.isRequired,
 };

@@ -32,4 +32,22 @@
       font-size: 18px;
     }
   }
+
+  &__remote {
+    color: $mainColor;
+    margin-left: auto;
+    padding-left: 10px;
+    font-weight: 600;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      left: -10px;
+      background: $mainColor;
+    }
+  }
 }

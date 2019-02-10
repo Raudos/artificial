@@ -14,6 +14,10 @@ const Offer = (props) => {
             <div key={type}>{type}</div>
           ))}
         </div>
+        
+        {props.data.remote && (
+          <div className="offerElement__remote">remote</div>
+        )}
       </div>
       
       <div className="col-12">

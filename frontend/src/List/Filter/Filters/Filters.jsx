@@ -13,7 +13,7 @@ const initialisedLoader = Loader({
 });
 
 const Filters = (props) => {
-  const { currencies, currentFilter, hasOffers, id, onFilterCurrenciesChange, onFilterTypesChange, onIdChange, types } = props;
+  const { currencies, currentFilter, hasOffers, id, onFilterCurrenciesChange, onFilterRemoteChange, onFilterTypesChange, onIdChange, types } = props;
   
   return (
     <div className="row hnFilters">
@@ -38,7 +38,7 @@ const Filters = (props) => {
       </div>
       
       <div className="col-12 col-md-6">
-        <FilterTitle title="Salary" />
+        <FilterTitle title="Salary and Remote option" />
         
         <FilterButton
           customAttributes={{
@@ -59,6 +59,13 @@ const Filters = (props) => {
             value={curr}
           />
         ))}
+  
+        <FilterButton
+          isActive={currentFilter.isRemote}
+          isDisabled={!hasOffers}
+          onFilterChange={onFilterRemoteChange}
+          value="Remote Available"
+        />
       </div>
     </div>
   );
@@ -74,6 +81,7 @@ Filters.propTypes = {
   hasOffers: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
   onFilterCurrenciesChange: PropTypes.func.isRequired,
+  onFilterRemoteChange: PropTypes.func.isRequired,
   onFilterTypesChange: PropTypes.func.isRequired,
   onIdChange: PropTypes.func.isRequired,
   types: PropTypes.arrayOf(PropTypes.string).isRequired,

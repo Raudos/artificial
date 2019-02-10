@@ -3,10 +3,12 @@ import React, { Component } from 'react';
 import FilterContainer from './Filter/index';
 import List from './List/List'
 
+
 class ListContainer extends Component {
   emptyFilter = {
     currencies: [],
     hasSalary: false,
+    isRemote: false,
     types: [],
   };
   idTimeout = null;
@@ -51,7 +53,7 @@ class ListContainer extends Component {
   
   filterOffers = () => {
     this.setState(({ currentFilter, offers }) => {
-      const hasFilters = currentFilter.hasSalary || currentFilter.types.length || currentFilter.currencies.length;
+      const hasFilters = currentFilter.hasSalary || currentFilter.types.length || currentFilter.currencies.length || currentFilter.isRemote;
 
       if (!hasFilters) {
         return { filteredOffers: offers };
@@ -59,25 +61,27 @@ class ListContainer extends Component {
       
       return {
         filteredOffers: offers.filter(offer => {
-          const criteria = { currency: false, type: false };
+          const criteriaPassed = { currency: false, remote: true, type: true };
     
           if (currentFilter.types.length) {
-            criteria.type = Boolean(offer.types.filter(offer => currentFilter.types.includes(offer)).length);
-          } else {
-            criteria.type = true;
+            criteriaPassed.type = Boolean(offer.types.filter(offer => currentFilter.types.includes(offer)).length);
           }
     
           if (currentFilter.hasSalary) {
-            criteria.currency = offer.hasSalary;
+            criteriaPassed.currency = offer.hasSalary;
           } else {
             if (currentFilter.currencies.length) {
-              criteria.currency = Boolean(offer.currencies.filter(curr => currentFilter.currencies.includes(curr)).length);
+              criteriaPassed.currency = Boolean(offer.currencies.filter(curr => currentFilter.currencies.includes(curr)).length);
             } else {
-              criteria.currency = true;
+              criteriaPassed.currency = true;
             }
           }
+          
+          if (currentFilter.isRemote) {
+            criteriaPassed.remote = offer.remote;
+          }
     
-          return criteria.currency && criteria.type;
+          return criteriaPassed.currency && criteriaPassed.remote && criteriaPassed.type;
         }),
       }
     });
@@ -102,6 +106,17 @@ class ListContainer extends Component {
       
       return { currentFilter };
     }, () => {
+      this.filterOffers();
+    });
+  };
+  
+  handleFilterRemoteChange = () => {
+    this.setState( ({ currentFilter }) => ({
+      currentFilter: {
+        ...currentFilter,
+        isRemote: !currentFilter.isRemote,
+      },
+    }), () => {
       this.filterOffers();
     });
   };
@@ -146,6 +161,7 @@ class ListContainer extends Component {
           hasOffers={Boolean(this.state.offers)}
           id={this.state.id}
           onFilterCurrenciesChange={this.handleFilterCurrenciesChange}
+          onFilterRemoteChange={this.handleFilterRemoteChange}
           onFilterTypesChange={this.handleFilterTypesChange}
           onIdChange={this.handleIdChange}
         />
