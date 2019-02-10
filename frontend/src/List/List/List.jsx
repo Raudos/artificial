@@ -33,7 +33,7 @@ class List extends Component {
     return (
       <div className="row offersList">
         <div className="col-12">
-          <p className="offersList__nbrOfElements">{`Number of elements - ${offers.length}`}</p>
+          <p data-testid="nbrOfElements" className="offersList__nbrOfElements">{`Number of elements - ${offers.length}`}</p>
         </div>
         <div className="col-12">
           <React.Fragment>
@@ -49,7 +49,7 @@ class List extends Component {
         
         {pagination < offers.length && (
           <div className="col-12">
-            <button className="offersList__showMore" onClick={this.showMore}>Show more</button>
+            <button data-testid="showMore" className="offersList__showMore" onClick={this.showMore}>Show more</button>
           </div>
         )}
       </div>

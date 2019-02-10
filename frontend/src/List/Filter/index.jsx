@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import Filters from './Filters/Filters';
 
 class FilterContainer extends Component {
   static handleFetchSuccess = (res) => {
     if (res.status === 200) {
-      return res.json();
+      return res.data;
     }
     
     throw new Error();
@@ -27,10 +28,10 @@ class FilterContainer extends Component {
   }
   
   initialiseFilters = async () => {
-    const types = await fetch('http://localhost:3003/getTypes')
+    const types = await axios.get('http://localhost:3003/getTypes')
       .then(FilterContainer.handleFetchSuccess)
       .catch(FilterContainer.handleFetchError);
-    const currencies = await fetch('http://localhost:3003/getCurrencies')
+    const currencies = await axios.get('http://localhost:3003/getCurrencies')
       .then(FilterContainer.handleFetchSuccess)
       .catch(FilterContainer.handleFetchError);
   

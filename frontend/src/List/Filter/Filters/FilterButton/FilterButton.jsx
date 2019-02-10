@@ -11,6 +11,7 @@ class FilterButton extends PureComponent {
     return (
       <button
         {...customAttributes}
+        data-testid="filterButton"
         className={classNames('filterButton', { 'filterButton--active': isActive })}
         disabled={isDisabled}
         name={value}

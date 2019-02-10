@@ -5,13 +5,13 @@ export default (options) => {
     const Loader = (props) => {
       if (options.isErrored(props)) {
         return (
-          <div>
+          <div data-testid="loaderError">
             Error
           </div>
         )
       } else if (options.isLoading(props)) {
         return (
-          <div>
+          <div data-testid="loader">
             Loading
           </div>
         )

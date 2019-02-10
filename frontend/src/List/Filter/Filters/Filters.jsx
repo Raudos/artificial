@@ -20,10 +20,10 @@ const Filters = (props) => {
       <div className="col-12">
         <FilterTitle title="Hacker News ID" />
         
-        <input className="hnFilters__idInput" onChange={onIdChange} value={id} />
+        <input data-testid="hackerId" className="hnFilters__idInput" onChange={onIdChange} value={id} />
       </div>
       
-      <div className="col-12 col-md-6">
+      <div data-testid="types" className="col-12 col-md-6">
         <FilterTitle title="Technologies" />
         
         {types.map(type => (
@@ -37,7 +37,7 @@ const Filters = (props) => {
         ))}
       </div>
       
-      <div className="col-12 col-md-6">
+      <div data-testid="currencies" className="col-12 col-md-6">
         <FilterTitle title="Salary and Remote option" />
         
         <FilterButton

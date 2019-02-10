@@ -5,7 +5,7 @@ import './offer.scss';
 
 const Offer = (props) => {
   return (
-    <div className="row offerElement">
+    <div data-testid="offerElement" className="row offerElement">
       <div className="col-12 offerElement__info">
         <div className="offerElement__elemNumber">{`#${props.index}.`}</div>
   

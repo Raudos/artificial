@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import FilterContainer from './Filter/index';
 import List from './List/List'
-
 
 class ListContainer extends Component {
   emptyFilter = {
@@ -29,10 +29,10 @@ class ListContainer extends Component {
   }
   
   fetchOffers = () => {
-    fetch(`http://localhost:3003/scrapAskHnById?id=${this.state.id}`)
+    axios.get(`http://localhost:3003/scrapAskHnById?id=${this.state.id}`)
       .then(res => {
         if (res.status === 200) {
-          return res.json();
+          return res.data;
         }
         
         throw new Error();
