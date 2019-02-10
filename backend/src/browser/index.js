@@ -10,7 +10,10 @@ async function getComments(page, comments = []) {
   
   $('.comment-tree > tbody > tr', bodyHTML).each(function() {
     if ($('.ind img', this).attr('width') === '0') {
-      comments.push(new OfferModel($('.comment', this).text()));
+      const id =  $(this).attr('id');
+      const offerText = $('.comment', this).text();
+      
+      comments.push(new OfferModel(id, offerText));
     }
   });
 

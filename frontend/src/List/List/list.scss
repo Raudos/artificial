@@ -1,0 +1,21 @@
+@import '../../variables';
+
+.offersList {
+  margin-bottom: 15px;
+
+  &__nbrOfElements {
+    font-weight: 600;
+  }
+
+  &__showMore {
+    border: 0;
+    background: transparent;
+    color: $mainColor;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

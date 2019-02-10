@@ -1,0 +1,19 @@
+@import '../../../variables';
+
+.hnFilters {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  background: $backgroundColor;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  &__idInput {
+    width: 100%;
+    border: 0;
+    background: $mainColor;
+    color: $textColor;
+    padding: 5px;
+  }
+}

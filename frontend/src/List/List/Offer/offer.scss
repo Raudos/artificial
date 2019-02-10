@@ -1,0 +1,35 @@
+@import '../../../variables';
+
+.offerElement {
+  margin-bottom: 15px;
+  padding: 5px 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: $backgroundColor;
+
+  &__info {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid $mainColor;
+    display: flex;
+  }
+
+  &__elemNumber {
+    font-weight: 600;
+    margin-right: 15px;
+    font-size: 18px;
+  }
+
+  &__types {
+    display: flex;
+    flex-wrap: wrap;
+
+    &>div {
+      margin-right: 10px;
+      color: $mainColor;
+      font-weight: 600;
+      font-size: 18px;
+    }
+  }
+}

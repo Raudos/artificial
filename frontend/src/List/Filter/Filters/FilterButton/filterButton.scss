@@ -1,0 +1,25 @@
+@import '../../../../variables';
+
+.filterButton {
+  cursor: pointer;
+  padding: 5px 15px;
+  background: $mainColor;
+  box-sizing: border-box;
+  color: $textColor;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  &--active {
+    color: $mainColor;
+    background: $textColor;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

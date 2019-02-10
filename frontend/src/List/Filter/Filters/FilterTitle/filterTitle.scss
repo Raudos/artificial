@@ -1,0 +1,12 @@
+$margin: 10px;
+
+.filterTitle {
+  margin-top: $margin;
+
+  &__heading {
+    font-size: 16px;
+    margin-bottom: $margin;
+    padding-bottom: $margin;
+    border-bottom: 1px solid orange;
+  }
+}
